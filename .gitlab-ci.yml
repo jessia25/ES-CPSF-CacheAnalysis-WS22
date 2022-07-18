@@ -23,7 +23,7 @@ image: mcr.microsoft.com/vscode/devcontainers/base:0-jammy
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    -apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    - apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
      llvm llvm-dev clang lldb gcc gdb cmake make ninja-build
     - echo "Compiling the code..."
