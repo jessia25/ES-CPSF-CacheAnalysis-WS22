@@ -27,9 +27,10 @@ build-job:       # This job runs in the build stage, which runs first.
     - export DEBIAN_FRONTEND=noninteractive 
     - apt-get -y install --no-install-recommends llvm llvm-dev clang lldb gcc gdb cmake make ninja-build
     - LLVM_DIR=/usr/lib/llvm-14
-    - echo "Compiling the code..."
-    - ./helper.sh a
-    - echo "Compile complete."
+    - mkdir build
+    - cd build
+    - cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DLT_LLVM_INSTALL_DIR=$LLVM_DIR ..
+    - make -j 2
 
 #unit-test-job:   # This job runs in the test stage.
 #  stage: test    # It only starts when the job in the build stage completes successfully.
