@@ -26,6 +26,7 @@ build-job:       # This job runs in the build stage, which runs first.
     - apt-get update && export DEBIAN_FRONTEND=noninteractive \
      && apt-get -y install --no-install-recommends \
      llvm llvm-dev clang lldb gcc gdb cmake make ninja-build
+    - export LLVM_DIR=/usr/lib/llvm-14
     - echo "Compiling the code..."
     - ./helper a
     - echo "Compile complete."
