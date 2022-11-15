@@ -1,7 +1,4 @@
 # RTSA-lab01-CacheAnalysis
-
-[![Build Status](http://129.217.34.203/api/badges/nils.hoelscher/RTSA-lab01-CacheAnalysis/status.svg)](http://129.217.34.203/nils.hoelscher/RTSA-lab01-CacheAnalysis)
-
 In this lab session you will learn how to implement a LRU cache in abstract representation.
 
 ## Exercise
@@ -159,8 +156,8 @@ With "C++ TestMate" install you can simply run or debug the test from the side p
 The "C++ TestMate" is not installed in the VM as I just added this feature now.
 Please feel free to add more test cases to your liking in [UnitTest.cpp](https://git.cs.tu-dortmund.de/nils.hoelscher/RTSA-lab01-CacheAnalysis/src/branch/master/UnitTest/UnitTest.cpp).
 
- 
-## Configuring and building 
+
+## Configuring and building
 
 The easiest way is to use the VS Code tasks in this project.
 By using CTR+Shift+B you can config and then build the project.
@@ -178,7 +175,7 @@ Again if you work on a Pool PC use poolhelper.sh insted of the helper.sh script.
 To get a list of what the helper script can do simply type
 
 ```bash
-./helper.sh 
+./helper.sh
 ```
 
 ### Run

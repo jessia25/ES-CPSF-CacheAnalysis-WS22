@@ -141,6 +141,18 @@ public: // everything is public, because IDGAF
   }
 
   /**
+   * @brief Executes an May LRU Join on the AbstractCacheState
+   *
+   * @param In, AbstractState that gets joined into the State.
+   */
+  void mayJoin(AbstractState In) {
+    /**
+     * The exercise is to Fill this function with an LRU must Join.
+     * For this you need to use Sets. Associativity and Blocks.
+     */
+  }
+
+  /**
    * @brief Checks if Address Addr is in Cache
    *
    * @param Addr Address to check.
