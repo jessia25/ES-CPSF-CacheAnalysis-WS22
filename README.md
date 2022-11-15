@@ -1,10 +1,10 @@
-# RTSA-lab01-CacheAnalysis
+# ES/CPSF-coding02-CacheAnalysis
 In this lab session you will learn how to implement a LRU cache in abstract representation.
 
 ## Exercise
-Implement a LRU Must-Join as described in the lecture, WCET - Cache Analysis.
+Implement a LRU May-Join as described in the lecture, WCET - Cache Analysis.
 A 16 SetCache with an associativity of 4 Assumed, and cache lines can hold two memory words -> CacheSize 1024kB.
-In order to do so, complete the function "mustJoin" inside [include/AbstractState.h:138](https://git.cs.tu-dortmund.de/nils.hoelscher/RTSA-lab01-CacheAnalysis/src/branch/master/include/AbstractState.h#L138).
+In order to do so, complete the function "mayJoin" inside [include/AbstractState.h:138](https://git.cs.tu-dortmund.de/nils.hoelscher/RTSA-lab01-CacheAnalysis/src/branch/master/include/AbstractState.h#L138).
 The goal is to join the inbound state into the "this" state.
 
 
@@ -13,10 +13,9 @@ The Setup and some nice to knows are described in the following sections.
 
 ## Disclaimer
 
-This is the first time we offer this exercise.
 Should you encounter something you think is a Bug, please let me (Nils) know, during lab sessions.
 
-Keep track of the Repository as I may add more features to the script.
+Keep track of the Repository as I may add more features.
 
 Also I do not support the usage of Windows, Linux is free of charge so get a copy.
 I am more than happy helping you install Linux on your machine.
@@ -41,7 +40,7 @@ CodeLLDB,
 Docker and
 Remote Development (Microsoft VS Code only!)
 
-For a general C/C++ setup of VS Code (I consider good) see:
+For a general and minimal C/C++ setup of VS Code (I consider good) see:
 <https://ahemery.dev/2020/08/24/c-cpp-vscode/>
 
 3.) The project comes with a pre configured dev container and should prompt you to use it after opening the project. With this you have a running setup. If not please continue reading the manual points.
@@ -227,11 +226,11 @@ These are here in case you want to "play around" with the Code and LLVM.
 On Darwin you can install LLVM 13 with [Homebrew](https://brew.sh/):
 
 ```bash
-brew install llvm@13
+brew install llvm@14
 ```
 
 If you already have an older version of LLVM installed, you can upgrade it to
-LLVM 13 like this:
+LLVM 14 like this:
 
 ```bash
 brew upgrade llvm
@@ -240,7 +239,7 @@ brew upgrade llvm
 Once the installation (or upgrade) is complete, all the required header files,
 libraries and tools will be located in `/usr/local/opt/llvm/`.
 
-### Installing LLVM 13 on Ubuntu
+### Installing LLVM 14 on Ubuntu
 
 On Ubuntu Bionic, you can [install modern
 LLVM](https://blog.kowalczyk.info/article/k/how-to-install-latest-clang-6.0-on-ubuntu-16.04-xenial-wsl.html)
@@ -250,13 +249,13 @@ from the official [repository](http://apt.llvm.org/):
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-13 main"
 sudo apt-get update
-sudo apt-get install -y llvm-13 llvm-13-dev llvm-13-tools clang-13
+sudo apt-get install -y llvm-14 llvm-14-dev llvm-14-tools clang-14
 ```
 
 This will install all the required header files, libraries and tools in
-`/usr/lib/llvm-13/`.
+`/usr/lib/llvm-14/`.
 
-### Building LLVM 13 From Sources
+### Building LLVM 14 From Sources
 
 Building from sources can be slow and tricky to debug. It is not necessary, but
 might be your preferred way of obtaining LLVM 13. The following steps will work
@@ -265,7 +264,7 @@ on Linux and Mac OS X:
 ```bash
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout release/13.x
+git checkout release/14.x
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD=host -DLLVM_ENABLE_PROJECTS=clang <llvm-project/root/dir>/llvm/
