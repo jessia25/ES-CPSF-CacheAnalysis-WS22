@@ -21,6 +21,8 @@ Also I do not support the usage of Windows, Linux is free of charge so get a cop
 I am more than happy helping you install Linux on your machine.
 
 ## Setups
+The Setup is very similar to Coding01 and can be repeated.
+We also will provide the Github classroom workspaces, enabling you to develop from your browser.
 
 ### VS Code Docker dev container (recommended setup)
 
