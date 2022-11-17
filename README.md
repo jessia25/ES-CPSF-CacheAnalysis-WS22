@@ -4,12 +4,16 @@ In this lab session you will learn how to implement a LRU cache in abstract repr
 ## Exercise
 Implement a LRU May-Join as described in the lecture, WCET - Cache Analysis.
 A 16 SetCache with an associativity of 4 Assumed, and cache lines can hold two memory words -> CacheSize 1024kB.
-In order to do so, complete the function "mayJoin" inside [include/AbstractState.h:138](https://git.cs.tu-dortmund.de/nils.hoelscher/RTSA-lab01-CacheAnalysis/src/branch/master/include/AbstractState.h#L138).
+In order to do so, complete the function "mayJoin" inside [include/AbstractState.h:138](https://github.com/nilhoel1/ES-CPSF-CacheAnalysis-WS22/blob/ES/CPSF/include/AbstractState.h#L148).
 The goal is to join the inbound state into the "this" state.
 
 
 The Project can be build, tested and Evaluated with the "helper" script.
 The Setup and some nice to knows are described in the following sections.
+
+When all MayJoinTests are passed the exercise is considered solved.
+
+Again to hand in this exercise, please use Moodle!
 
 ## Disclaimer
 
@@ -23,8 +27,15 @@ I am more than happy helping you install Linux on your machine.
 ## Setups
 The Setup is very similar to Coding01 and can be repeated.
 We also will provide the Github classroom workspaces, enabling you to develop from your browser.
+Also the setup using Docker is even stronger recommended, since a specific version of [LLVM](https://llvm.org/) is needed.
+
+Using the recommended Setup, you can config and build the project with "Ctr+Shift+b".
+The tests can be run/debugged from the side panel from the lab flask, as done for Coding01.
+Please remember to always build before testing or debugging!
 
 ### VS Code Docker dev container (recommended setup)
+
+This setup is basically already done if using the GitHub Classroom.
 
 1.) install docker and VS Code on your Distribution. Please keep in mind Dev containers are only supported by the native version of VS Code from Microsoft!
 
@@ -45,9 +56,14 @@ Remote Development (Microsoft VS Code only!)
 For a general and minimal C/C++ setup of VS Code (I consider good) see:
 <https://ahemery.dev/2020/08/24/c-cpp-vscode/>
 
+The only annoying thing are the Inlay Hints from clangd, which can be disabled by setting the following setting:
+```json
+"editor.inlayHints.enabled": "offUnlessPressed"
+```
+
 3.) The project comes with a pre configured dev container and should prompt you to use it after opening the project. With this you have a running setup. If not please continue reading the manual points.
 
-3.manual.) Use the helper script to build and run a Container.
+3.manual.)<- not recommended. Use the helper script to build and run a Container.
 
 ```bash
 ./helper.sh docker
@@ -57,7 +73,7 @@ This will build a docker image and run a Docker container with the current direc
 
 The Docker container can later be started from the Docker VS Code extension.
 
-4.manual) Attach VS Code to the container, in the Docker Tab, and start developing
+4.manual)<- not recommended. Attach VS Code to the container, in the Docker Tab, and start developing
 
 ### VS Code native setup
 
@@ -81,7 +97,7 @@ For a general C/C++ setup of VS Code (I consider good) see:
 
 Most parts can be skipped, as they are already integrated in this Repo.
 
-3.a.) Set the LLVM_DIR variable to your LLVM(14) installation.
+3.a.) Set the LLVM_DIR variable to your LLVM(14) installation. On some distributions llvm-14 can be installed via the package manager.
 
 ```bash
 export LLVM_DIR=<path/to/your/llvm/installation>
@@ -91,7 +107,7 @@ export LLVM_DIR=<path/to/your/llvm/installation>
 
 4.) Pressing F5 will start a debug session, make sure to set halting points.
 
-### Mac setup
+### Mac setup (deprecated)
 
 I recommend using docker and VS Code for setup.
 Also check out the recommended extensions in the Docker section.
@@ -104,7 +120,7 @@ For Mac (tested on M1 Mac mini) you can also use:
 
 But you will need brew installed and also have to use the poolhelper script instead of the normal helper script.
 
-### Setup on a pool PC
+### Setup on a pool PC (deprecated)
 
 At first get an IRB account from the following link and log in:
 
@@ -223,7 +239,7 @@ opt -load-pass-plugin build/libCacheAnalysisPass.so \
 These Setups are alternatives and I do not recommend them.
 These are here in case you want to "play around" with the Code and LLVM.
 
-### Installing LLVM 13 on Mac OS X
+### Installing LLVM 14 on Mac OS X
 
 On Darwin you can install LLVM 13 with [Homebrew](https://brew.sh/):
 
@@ -260,7 +276,7 @@ This will install all the required header files, libraries and tools in
 ### Building LLVM 14 From Sources
 
 Building from sources can be slow and tricky to debug. It is not necessary, but
-might be your preferred way of obtaining LLVM 13. The following steps will work
+might be your preferred way of obtaining LLVM 14. The following steps will work
 on Linux and Mac OS X:
 
 ```bash
