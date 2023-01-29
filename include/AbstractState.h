@@ -145,13 +145,19 @@ public: // everything is public, because IDGAF
    *
    * @param In, AbstractState that gets joined into the State.
    */
-  void mayJoin(AbstractState In) {
-    /**
-     * The exercise is to Fill this function with an LRU must Join.
-     * For this you need to use Sets. Associativity and Blocks.
-     */
-  }
+ void mayJoin(AbstractState In) {
 
+    for (int Index = 0; Index < 16; Index++) {
+        for (int Age = 0; Age < 4; Age++) {
+            for (auto InBlock : In.Sets[Index].Associativity[Age].Blocks) {
+                auto& OutBlocks = Sets[Index].Associativity[Age].Blocks;
+                if (std::find(OutBlocks.begin(), OutBlocks.end(), InBlock) == OutBlocks.end()) {
+                    OutBlocks.push_back(InBlock);
+                }
+            }
+        }
+    }
+}
   /**
    * @brief Checks if Address Addr is in Cache
    *
